@@ -87,26 +87,16 @@ const BookCover = () => {
             <img src={book?.cover_img} alt="cover img" />
           </div>
           <div className='book-details-form'>
+            <h2 className="book-title">{book?.title}</h2>
+              <p className="book-details-item" style={{ margin: '0.5rem 0' }}>Subject Places: {book?.subject_places}</p>
+              <p className="book-details-item" style={{ margin: '0.5rem 0' }}>Subject Times: {book?.subject_times}</p>
             <form onSubmit={handleSubmit}>
-              <label htmlFor='name'>Name:</label>
-              <input type='text' id='name' value={name} onChange={handleNameChange} />
-
-              <label htmlFor='address'>Address:</label>
-              <input type='text' id='address' value={address} onChange={handleAddressChange} />
-
-              <button type='submit'>Rate and Review</button>
-
-              <button type='button' onClick={() => window.open('/LoremIpsum.pdf', '_blank')}>
-                Baca Buku
-              </button>
-
+              <button type='button' onClick={() => window.open('/LoremIpsum.pdf', '_blank')}> Baca Buku </button>
               <button type="button" onClick={handleDownloadPDF}>Download PDF</button>
-            
             </form>
           </div>
         </div>
       </div>
-
     </section>
   );
 };
