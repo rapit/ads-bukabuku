@@ -1,19 +1,17 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import {
-  BrowserRouter,
-  Routes,
-  Route
+import ReactDOM from 'react-dom/client';
+import{
+  BrowserRouter, Routes, Route
 } from 'react-router-dom';
-import './index.css';
+import "./index.css";
 import Home from './Pages/Home/Home';
 import About from './Pages/About/About';
 import Booklist from './Components/Booklist/Booklist';
 import Bookdetails from './Components/Bookdetails/Bookdetails';
 import Login from './Pages/Login/Login';
 import Register from './Pages/Register/Register';
-import BookCover from './Components/BookCover/BookCover';
 import Profile from './Pages/Profile/Profile';
+import BookCover from './Components/Bookcover/BookCover';
 import { AppProvider } from './Context';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
