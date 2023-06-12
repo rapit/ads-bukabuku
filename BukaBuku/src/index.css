@@ -17,7 +17,6 @@
 
 html{
   font-size: 10px;
-
 }
 
 body{
@@ -34,7 +33,7 @@ ul{
 
 a{
   text-decoration: none;
-  color: var(--black-color);
+  /* color: var(--black-color); */
 }
 
 button{
@@ -104,6 +103,9 @@ input{
   display: flex;
   align-items: center;
 }
+.flex j{
+  text-align: justify;
+}
 .flex-column{
   flex-direction: column;
 }
@@ -112,6 +114,8 @@ input{
 }
 .flex-c{
   justify-content: center;
+  width: 60px;
+  height: 30px;
 }
 .grid{
   display: grid;
