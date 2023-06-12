@@ -1,50 +1,37 @@
-import React, {useState} from 'react';
-import { Link } from 'react-router-dom';
+import {Component} from 'react';
+import { Menu } from './Menu';
 import "./Navbar.css";
-import logoImg from "../../images/nigrbukbuk.png";
-import {HiOutlineMenuAlt3} from "react-icons/hi";
-import profileImg from "../../images/hah.png";
+import logo from "../../images/Logo-BukaBuku.png";
 
-const Navbar = () => {
-  const [toggleMenu, setToggleMenu] = useState(false);
-  const handleNavbar = () => setToggleMenu(!toggleMenu);
-
-  return (
-    <nav className='navbar' id = "navbar">
-      <div className='container navbar-content flex'>
-        <div className='brand-and-toggler flex flex-sb'>
-          <Link to = "/" className='navbar-brand flex'>
-            <img src = {logoImg} alt = "site logo" />
-            
-          </Link>
-          <button type = "button" className='navbar-toggler-btn' onClick={handleNavbar}>
-            <HiOutlineMenuAlt3 size = {35} style = {{
-              color: `${toggleMenu ? "#fff" : "#010101"}`
-            }} />
-          </button>
-        </div>
-
-        <div className={toggleMenu ? "navbar-collapse show-navbar-collapse" : "navbar-collapse"}>
-          <ul className = "navbar-nav">
-            <li className='nav-item'>
-              <Link to = "book" className='nav-link text-uppercase text-white fs-22 fw-6 ls-1'>Home</Link>
-            </li>
-            <li className='nav-item'>
-              <Link to = "about" className='nav-link text-uppercase text-white fs-22 fw-6 ls-1'>About</Link>
-            </li>
-            <li className='nav-item'>
-              <Link to = "Login" className='nav-link text-uppercase text-white fs-22 fw-6 ls-1'>Login</Link>
-            </li>
-            <li className="nav-item-gambar">
-              <Link to="/profile" className="nav-link text-uppercase text-white fs-22 fw-6 ls-1">
-                <img src={profileImg} alt="profile" />
-              </Link>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-  )
+class Navbar extends Component{
+    state = {clicked :false};
+    handleClick =() =>{
+        this.setState({clicked : 
+            !this.state.clicked})
+    }
+    render(){
+        return ( 
+            <nav className='NavbarItems'>
+                <img src = {logo} alt = "site logo" className='logoBukaBuku'/>
+                <div className='menu-icons' onClick={this.handleClick}>
+                    <i className={this.state.clicked? "fas fa-times" : "fas fa-bars"}></i>
+                </div>
+                <ul className={this.state.clicked?
+                "nav-menu active" : "nav-menu"}>
+                    {Menu.map((item, index) =>
+                    {
+                        return(
+                            <li key={index} className={item.cName}>
+                                <a href={item.url}>
+                                    <i className={item.icon}></i>{item.title}
+                                </a>
+                            </li>
+                        )
+                    })}
+                </ul>
+            </nav>
+        );
+    }
 }
 
-export default Navbar
+export default Navbar;
